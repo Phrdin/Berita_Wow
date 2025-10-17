@@ -1,0 +1,99 @@
+
+:root {
+    
+    --light-blue: #00BCD4; 
+    --primary-blue: #0288D1; 
+    --background-white: #FFFFFF;
+    --text-dark: #212529;
+}
+
+body {
+    background-color: #F5F7FA; 
+    color: var(--text-dark);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.custom-navbar {
+    background-color: var(--light-blue) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* Kustomisasi Toggler (untuk mobile) */
+.custom-toggler {
+    border-color: rgba(255, 255, 255, 0.5); 
+}
+
+.custom-toggler .navbar-toggler-icon {
+    /* Mengubah warna ikon menjadi putih agar kontras dengan navbar baru */
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Kustomisasi Tombol Pencarian */
+.custom-search-btn {
+    color: var(--background-white);
+    border-color: var(--background-white);
+    transition: background-color 0.3s ease;
+}
+
+.custom-search-btn:hover {
+    background-color: var(--primary-blue);
+    color: var(--background-white);
+    border-color: var(--primary-blue);
+}
+
+/* Kustomisasi Judul Utama */
+.custom-title {
+    color: var(--primary-blue);
+    font-weight: 700;
+}
+
+/* Kustomisasi Kartu Berita */
+.custom-card {
+    border: 1px solid var(--light-blue);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--background-white);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2) !important; /* Efek shadow disesuaikan dengan warna navbar baru */
+}
+
+.custom-card-img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Kustomisasi Judul Artikel (Dikecilkan) */
+.custom-card-title {
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 1.1rem; /* Mengurangi ukuran font judul artikel dari 1.25rem */
+    line-height: 1.4; /* Memberi sedikit jarak antar baris */
+}
+
+/* Kustomisasi Tombol "Baca Selengkapnya" (Dikecilkan) */
+.custom-btn {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #01579B; /* Warna biru yang lebih gelap saat di-hover */
+    border-color: #01579B;
+}
+
+/* Kustomisasi Footer */
+.custom-footer {
+    background-color: var(--primary-blue);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
