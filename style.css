@@ -1,99 +1,62 @@
+/* style.css */
 
+/* Warna utama kustom */
 :root {
-    
-    --light-blue: #00BCD4; 
-    --primary-blue: #0288D1; 
-    --background-white: #FFFFFF;
-    --text-dark: #212529;
+    --primary-color: #007bff; /* Biru */
+    --secondary-color: #343a40; /* Abu gelap */
 }
-
-body {
-    background-color: #F5F7FA; 
-    color: var(--text-dark);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 
 .custom-navbar {
-    background-color: var(--light-blue) !important;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary-color) !important;
 }
 
-.navbar-brand {
-    font-size: 1.5rem;
+.custom-navbar .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
 }
 
-/* Kustomisasi Toggler (untuk mobile) */
 .custom-toggler {
-    border-color: rgba(255, 255, 255, 0.5); 
+    border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 .custom-toggler .navbar-toggler-icon {
-    /* Mengubah warna ikon menjadi putih agar kontras dengan navbar baru */
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Kustomisasi Tombol Pencarian */
 .custom-search-btn {
-    color: var(--background-white);
-    border-color: var(--background-white);
-    transition: background-color 0.3s ease;
+    border-color: white !important;
+    color: white !important;
 }
 
 .custom-search-btn:hover {
-    background-color: var(--primary-blue);
-    color: var(--background-white);
-    border-color: var(--primary-blue);
+    background-color: white !important;
+    color: var(--secondary-color) !important;
 }
 
-/* Kustomisasi Judul Utama */
 .custom-title {
-    color: var(--primary-blue);
     font-weight: 700;
+    color: var(--secondary-color);
 }
 
-/* Kustomisasi Kartu Berita */
 .custom-card {
-    border: 1px solid var(--light-blue);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: var(--background-white);
-    border-radius: 10px;
-    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
 }
 
 .custom-card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.2) !important; /* Efek shadow disesuaikan dengan warna navbar baru */
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .custom-card-img {
     height: 200px;
     object-fit: cover;
-    width: 100%;
 }
 
-/* Kustomisasi Judul Artikel (Dikecilkan) */
-.custom-card-title {
-    color: var(--primary-blue);
-    font-weight: 600;
-    font-size: 1.1rem; /* Mengurangi ukuran font judul artikel dari 1.25rem */
-    line-height: 1.4; /* Memberi sedikit jarak antar baris */
-}
-
-/* Kustomisasi Tombol "Baca Selengkapnya" (Dikecilkan) */
 .custom-btn {
-    background-color: var(--primary-blue);
-    border-color: var(--primary-blue);
-    transition: background-color 0.3s ease;
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
 }
 
-.custom-btn:hover {
-    background-color: #01579B; /* Warna biru yang lebih gelap saat di-hover */
-    border-color: #01579B;
-}
-
-/* Kustomisasi Footer */
 .custom-footer {
-    background-color: var(--primary-blue);
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary-color);
 }
