@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Situs Berita  Global</title>
+    <title>Situs Berita Global</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJd4S8z+3I4mSj/J5K+2h6QeRz0J0z4l5P1u3w0E3s/S6N4jF6G1H8N9I1p6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg custom-navbar sticky-top shadow-sm">
@@ -21,7 +19,7 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" aria-current="page" href="#" onclick="fetchNews()">Home</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="#">Profil</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="#">Terbaru</a></li>
                     <li class="nav-item dropdown">
@@ -67,7 +65,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
-        const key = '6b5b3f2327f94daa943a550b1787cf02'; 
         const newsContainer = document.getElementById('news-container');
         const searchForm = document.getElementById('search-form');
         const searchInput = document.getElementById('search-input');
@@ -79,19 +76,17 @@
             newsContainer.innerHTML = `<div class="col-12 text-center my-5"><div class="spinner-border text-primary" role="status"></div><p class="text-muted mt-2">Loading news...</p></div>`;
             noNewsMessage.style.display = 'none';
             
-            let url;
-            const countryCode = 'us'; 
+            let url = '/api/news?'; 
             
             if (query) {
                 mainTitle.textContent = `Hasil Cari buat "${query}"`;
-                url = `https://newsapi.org/v2/everything?q=${query}&sortBy=publishedAt&language=en&apiKey=${key}`;
+                url += `q=${query}`;
             } else if (category) {
                 mainTitle.textContent = `Berita Utama Topik ${category.charAt(0).toUpperCase() + category.slice(1)} (US)`;
-                url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&category=${category}&apiKey=${key}`;
+                url += `category=${category}`;
             } 
             else {
                 mainTitle.textContent = 'Berita Utama Hari Ini (US)';
-                url = `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=${key}`;
             }
 
             fetch(url)
@@ -132,12 +127,10 @@
                     }
                 })
                 .catch(error => {
-                    console.error("Gagal ambil berita:", error);
-                    newsContainer.innerHTML = `<div class='col-12'><div class='alert alert-danger text-center' role='alert'><i class="fas fa-exclamation-triangle me-2"></i> Gagal total, cek API Key atau internet lo!</div></div>`;
+                    newsContainer.innerHTML = `<div class='col-12'><div class='alert alert-danger text-center' role='alert'><i class="fas fa-exclamation-triangle me-2"></i> Gagal memuat. Pastikan Anda sudah mengatur API Key di Vercel.</div></div>`;
                 });
         };
 
-       
         searchForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const query = searchInput.value.trim();
@@ -145,7 +138,6 @@
                 fetchNews(query);
             }
         });
-        
         
         document.querySelectorAll('.dropdown-menu a').forEach(item => {
             item.addEventListener('click', (e) => {
@@ -155,13 +147,7 @@
             });
         });
 
-        // Load berita pas web kebuka
         fetchNews();
-
-    $(document).ready(function(){
-            console.log("JQuery is ready!");
-        });
-
     </script>
 </body>
 </html>
