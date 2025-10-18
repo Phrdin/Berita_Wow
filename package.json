@@ -1,0 +1,10 @@
+{
+  "name": "berita-wow-api",
+  "version": "1.0.0",
+  "description": "Serverless function for NewsAPI",
+  "main": "api/news.js",
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
