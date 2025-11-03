@@ -1,14 +1,11 @@
 // api/news.js
 import fetch from 'node-fetch';
 
-const NEWS_API_KEY = process.env.NEWS_API_KEY;
+// Ganti process.env.NEWS_API_KEY menjadi kode API Anda untuk DEBUG VERCEL
+const NEWS_API_KEY = '6b5b3f2327f94daa943a550b1787cf02'; 
 
 export default async (req, res) => {
     const { q, category } = req.query;
-
-    if (!NEWS_API_KEY) {
-        return res.status(500).json({ status: 'error', code: 'apiKeyMissing', message: 'NEWS_API_KEY tidak dikonfigurasi di Vercel.' });
-    }
 
     let url;
     const countryCode = 'us';
@@ -25,12 +22,13 @@ export default async (req, res) => {
         const newsResponse = await fetch(url);
         const data = await newsResponse.json();
 
+        // Mengirimkan error NewsAPI secara spesifik ke frontend
         if (data.status === 'error') {
             return res.status(400).json(data); 
         }
 
         res.status(200).json(data);
     } catch (error) {
-        res.status(500).json({ status: 'error', message: 'Gagal memuat berita dari sumber eksternal. Cek log Vercel.' });
+        res.status(500).json({ status: 'error', message: 'Internal Server Error: Gagal koneksi ke sumber berita.' });
     }
 };
