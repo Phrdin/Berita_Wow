@@ -92,11 +92,17 @@
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error(`Error HTTP: ${response.status}`);
+                        // Jika Vercel Serverless Function gagal (Error 500)
+                        throw new Error(`Error HTTP: ${response.status}. Cek Runtime Logs Vercel.`);
                     }
                     return response.json();
                 })
                 .then(data => {
+                    // Cek jika NewsAPI mengembalikan error (misalnya API Key Invalid)
+                    if (data.status === 'error') {
+                         throw new Error(`NewsAPI Error: ${data.code} - ${data.message}`);
+                    }
+                    
                     newsContainer.innerHTML = ""; 
                     
                     if (data.articles && data.articles.length > 0) {
@@ -127,7 +133,8 @@
                     }
                 })
                 .catch(error => {
-                    newsContainer.innerHTML = `<div class='col-12'><div class='alert alert-danger text-center' role='alert'><i class="fas fa-exclamation-triangle me-2"></i> Gagal memuat. Pastikan Anda sudah mengatur API Key di Vercel.</div></div>`;
+                    // Menampilkan pesan error yang lebih detail
+                    newsContainer.innerHTML = `<div class='col-12'><div class='alert alert-danger text-center' role='alert'><i class="fas fa-exclamation-triangle me-2"></i> Gagal memuat. ${error.message}.</div></div>`;
                 });
         };
 
